@@ -1,8 +1,8 @@
-from PyQt6.QtWidgets import QApplication, QWidget
+from PyQt6.QtWidgets import QApplication, QMainWindow
 
 app = QApplication([])
 
-window = QWidget()
+window = QMainWindow()
 window.show()
 
 app.exec()
