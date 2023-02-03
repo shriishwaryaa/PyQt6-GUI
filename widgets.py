@@ -1,70 +1,33 @@
 import sys
-
-from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import (
-    QApplication,
-    QCheckBox,
-    QComboBox,
-    QDateEdit,
-    QDateTimeEdit,
-    QDial,
-    QDoubleSpinBox,
-    QFontComboBox,
-    QLabel,
-    QLCDNumber,
-    QLineEdit,
-    QMainWindow,
-    QProgressBar,
-    QPushButton,
-    QRadioButton,
-    QSlider,
-    QSpinBox,
-    QTimeEdit,
-    QVBoxLayout,
-    QWidget,
+    QMainWindow, QApplication,
+    QLabel, QCheckBox, QComboBox, QListWidget, QLineEdit,
+    QLineEdit, QSpinBox, QDoubleSpinBox, QSlider
 )
+from PyQt6.QtCore import Qt
+from PyQt6.QtGui import QFont, QPixmap
 
 
-# Subclass QMainWindow to customize your application's main window
 class MainWindow(QMainWindow):
+
     def __init__(self):
-        super().__init__()
+        super(MainWindow, self).__init__()
 
-        self.setWindowTitle("All Widgets")
+        self.setWindowTitle("My GUI")
 
-        layout = QVBoxLayout()
-        widgets = [
-            QCheckBox,
-            QComboBox,
-            QDateEdit,
-            QDateTimeEdit,
-            QDial,
-            QDoubleSpinBox,
-            QFontComboBox,
-            QLCDNumber,
-            QLabel,
-            QLineEdit,
-            QProgressBar,
-            QPushButton,
-            QRadioButton,
-            QSlider,
-            QSpinBox,
-            QTimeEdit,
-        ]
+        widget = QLabel("Hello")
+        widget.setFont(QFont("Times"))
 
-        for w in widgets:
-            layout.addWidget(w())
+        font = widget.font()
+        font.setPointSize(30)
+        widget.setFont(font)
 
-        widget = QWidget()
-        widget.setLayout(layout)
+        widget.setAlignment(Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignVCenter)
 
-        # Set the central widget of the Window. Widget will expand
-        # to take up all the space in the window by default.
         self.setCentralWidget(widget)
 
 
 app = QApplication(sys.argv)
-window = MainWindow()
-window.show()
-
+w = MainWindow()
+w.show()
 app.exec()
