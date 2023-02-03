@@ -8,19 +8,17 @@ class MainWindow(QMainWindow):
 
         self.setWindowTitle("My GUI")
 
-        button = QPushButton("Press Me!")
-        button.setCheckable(True)
-        button.clicked.connect(self.button_click)
-        button.clicked.connect(self.button_toggle)
+        self.button = QPushButton("Press Me!")
+        self.button.clicked.connect(self.button_click)
 
         # Set the central widget of the Window.
-        self.setCentralWidget(button)
+        self.setCentralWidget(self.button)
 
     def button_click(self):
-        print("Clicked!")
+        self.button.setText("You already pressed me!")
+        self.button.setEnabled(False)
 
-    def button_toggle(self, checked):
-        print("Checked?", checked)
+        self.setWindowTitle("My GUI changes")
 
 
 app = QApplication(sys.argv)
