@@ -25,6 +25,7 @@ class MainWindow(QMainWindow):
         widget.setAlignment(Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignVCenter)
 
         widget.setPixmap(QPixmap('dino.png'))
+        widget.setScaledContents(True)
 
         self.setCentralWidget(widget)
 
