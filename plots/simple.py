@@ -2,9 +2,9 @@ import sys
 import matplotlib
 matplotlib.use('QtAgg')
 
-from PyQt6.QtWidgets import QMainWindow, QApplication
+from PyQt6.QtWidgets import QMainWindow, QApplication, QVBoxLayout, QWidget
 
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg, NavigationToolbar2QT
 from matplotlib.figure import Figure
 
 
@@ -25,7 +25,16 @@ class MainWindow(QMainWindow):
 
         plot = MplCanvas(self, width=5, height=4, dpi=100)
         plot.axes.plot([0, 1, 2, 3, 4], [10, 1, 20, 3, 40])
-        self.setCentralWidget(plot)
+
+        toolbar = NavigationToolbar2QT(plot, self)
+
+        layout = QVBoxLayout()
+        layout.addWidget(toolbar)
+        layout.addWidget(plot)
+
+        widget = QWidget()
+        widget.setLayout(layout)
+        self.setCentralWidget(widget)
 
         self.show()
 
